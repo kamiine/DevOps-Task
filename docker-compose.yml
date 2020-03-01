@@ -1,0 +1,47 @@
+version: '3'
+services:
+  substrate_node:
+    ports:
+      - "30333:30333"
+      - "9933:9933"
+      - "9944:9944"
+      - "9615:9615"
+    image: parity/substrate:latest
+    volumes:
+      - "substrate:/data"
+    command: "----prometheus-external"
+    networks:
+      testing_net:
+        ipv4_address: 172.28.1.1
+  grafana_node:
+    ports:
+      - "3000:3000"
+    image: grafana/grafana
+    volumes:
+      - "grafana:/data"
+    networks:
+      testing_net:
+        ipv4_address: 172.28.1.2
+
+  prometheus_node:
+    ports:
+      - "9090:9090"
+    image: prom/prometheus
+    volumes:
+      - "prometheus:/data"
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      testing_net:
+        ipv4_address: 172.28.1.3
+
+volumes:
+  substrate:
+  prometheus:
+  grafana:
+
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
