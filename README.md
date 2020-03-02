@@ -1,6 +1,6 @@
 # Devops-parity !
 
-Let's show the automation of the provisioning and deployment process of deploying a substrate network. 
+Let's show the automation of the provisioning and deployment process for deploying a substrate network. 
 
 # First step: Docker Compose
 
