@@ -19,7 +19,7 @@ I used [this dashboard](https://grafana.com/grafana/dashboards/11784) for visual
 ## 3rd Step: Kubernetes
 
 I used the [Kompose](https://kompose.io/) command in order to convert the docker-compose file to kubernetes files. The result is in the kubernetes-files folder. 
-As I don't have to a public server, I couldn't deploy the kubernetes cluster but the files generated should be enough to deploy a cluster using 
+As I don't have to a public server, I couldn't use the local kubernetes cluster to accomplish this task but the files generated should be enough to deploy a cluster using 
 ```bash
  kompose convert -o kubernetes-files/
  kompose up 
